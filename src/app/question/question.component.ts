@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { NumberValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
+import { myscore } from '../myscore';
 import { QuestionService } from '../question.service';
 import { Questions1 } from '../Questions1';
+import { ReportService } from '../report.service';
 import { UserResponse } from "../UserResponse";
 
 @Component({
@@ -27,10 +29,13 @@ export class QuestionComponent implements OnInit {
   userResponse : UserResponse[]=[new UserResponse()];
   loggedInUserId:number;
 
+  Myscore:myscore=new myscore();
+  result:string;
+
   
   
   
-  constructor(public questionService:QuestionService,public router:Router) {
+  constructor(public questionService:QuestionService,public router:Router,public reportService:ReportService) {
     
    }
 
@@ -39,11 +44,6 @@ export class QuestionComponent implements OnInit {
     this.subjectNumber=parseInt(sessionStorage.getItem("subjectId"));
     this.levelNumber=parseInt(sessionStorage.getItem("levelId"));
     this.loggedInUserId=parseInt(sessionStorage.getItem("userId"));
-
-    
-
-  
-   
    
     this.questionService.getAllQuestionsSLService(this.subjectNumber,this.levelNumber).subscribe((data:any)=>{
      this.allQuestions=data;
@@ -99,10 +99,7 @@ export class QuestionComponent implements OnInit {
   }
   submit(){
     this.isSubmitted=true;
-    console.log(this.userResponse[0].userAnswer);
-    console.log(this.userResponse[1].userAnswer);
-    console.log(this.userResponse[2].userAnswer);
-    console.log(this.userResponse[3].userAnswer);
+    
     console.log("initial marks"+this.marks);
 
 
@@ -113,7 +110,37 @@ export class QuestionComponent implements OnInit {
     }
     console.log(this.marks);
     sessionStorage.setItem("userMarks",String(this.marks));
-    this.router.navigate(['showResult']);
+    if(this.levelNumber==1){
+      this.Myscore.l1Score=this.marks;
+      this.Myscore.l2Score=null;
+      this.Myscore.l3Score=null;
+      // this.Myscore.myuser=this.loggedInUserId;
+      // this.Myscore.myexam=this.subjectNumber;
+      this.reportService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
+
+        // this.result=data;
+        // sessionStorage.setItem("result",this.result);
+        this.router.navigate(['showResult']);
+        //console.log("hi");
+
+        
+      });
+
+      
+      
+      
+
+      
+
+
+    }
+    else if(this.levelNumber==2){
+
+    }
+    else{
+
+    }
+   
   }
 
  

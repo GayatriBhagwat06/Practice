@@ -8,9 +8,7 @@ import { Questions1 } from './Questions1';
   providedIn: 'root'
 })
 export class QuestionService {
-  qns:object[]= [];
-  qns1:object[]=[];
-  correctAnswerCount:number=0;
+ 
  
   
 
