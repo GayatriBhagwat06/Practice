@@ -1,16 +1,41 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ExamComponent } from './exam/exam.component';
+import { QuestionComponent } from './question/question.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { InstructionsComponent } from './instructions/instructions.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { HomeComponent } from './home/home.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SubjectListComponent } from './subject-list/subject-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ExamComponent,
+    QuestionComponent,
+    UserloginComponent,
+    InstructionsComponent,
+    AboutusComponent,
+    HomeComponent,
+    SubjectListComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    CarouselModule,
+    NgbModule
+    
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
