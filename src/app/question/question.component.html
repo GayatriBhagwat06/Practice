@@ -145,6 +145,7 @@
       <button *ngIf="questionNumber!=0" class="button" value="prev" (click)="prevQues()">Previous</button>
       <button *ngIf="allQuestions.length-1>questionNumber" class="button" value="next" (click)="nextQues()">Next</button>
       </div> -->
+
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -170,6 +171,31 @@
           <button class="btn btn-blue" *ngIf="questionNumber!=0"  value="prev" (click)="prevQues()">Previous</button>
       <button class="btn btn-blue" *ngIf="allQuestions.length-1>questionNumber" value="next" (click)="nextQues()">Next</button>
       </form>
+      <!-- <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-blue" type="submit" (click)="submit()">Submit test</button>
+          </div>
+        </div>
+      </div>
+      <form>
+        <p>{{questionNumber+1}}. {{allQuestions[questionNumber].question}}</p>
+  
+          <input type="radio"  name ="questionNumber" [(ngModel)]="userResponse1.userAnswer"  >
+          <label for="op3"  style="padding: 15px;">{{allQuestions[questionNumber].option1}} </label><br>
+
+          <input type="radio"  name ="questionNumber"  [(ngModel)]="userResponse1.userAnswer">
+          <label for="op3"  style="padding: 15px;">{{allQuestions[questionNumber].option2}} </label><br>
+
+          <input type="radio"  name ="questionNumber"  [(ngModel)]="userResponse1.userAnswer">
+          <label for="op3"  style="padding: 15px;">{{allQuestions[questionNumber].option3}} </label><br>
+
+          <input type="radio"  name ="questionNumber" [(ngModel)]="userResponse1.userAnswer">  
+          <label for="op3"  style="padding: 15px;">{{allQuestions[questionNumber].option4}} </label><br>
+
+          <button class="btn btn-blue" *ngIf="questionNumber!=0"  value="prev" (click)="prevQues()">Previous</button>
+      <button class="btn btn-blue" *ngIf="allQuestions.length-1>questionNumber" value="next" (click)="nextQues()">Next</button>
+      </form> -->
       
 
       

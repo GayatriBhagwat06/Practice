@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SubjectListComponent } from './subject-list/subject-list.component';
+import { ShowResultComponent } from './show-result/show-result.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
     AboutusComponent,
     HomeComponent,
     SubjectListComponent,
+    ShowResultComponent,
   ],
   imports: [
     BrowserModule,

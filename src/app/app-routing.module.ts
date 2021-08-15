@@ -4,6 +4,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HomeComponent } from './home/home.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { QuestionComponent } from './question/question.component';
+import { ShowResultComponent } from './show-result/show-result.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 
@@ -32,6 +33,9 @@ const routes: Routes = [
   },
   {
     path:'showQuestion',component:QuestionComponent
+  },
+  {
+    path:'showResult',component:ShowResultComponent
   }
  
 ];

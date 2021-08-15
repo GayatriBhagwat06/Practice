@@ -1,7 +1,8 @@
 export class UserResponse{
-userAnswer:string="default ";
-userQuestionId:number=-1;
-userUserId:number=-1;
-userSubjectId:number=-1;
-userLevelId:number=-1;
+userAnswer:string;
+userQuestionId:number;
+userUserId:number;
+userSubjectId:number;
+userLevelId:number;
+userMarks:number;
 }
