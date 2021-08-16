@@ -32,6 +32,11 @@ export class QuestionComponent implements OnInit {
   Myscore:myscore=new myscore();
   result:string;
 
+  tempLevel1:number;
+  tempLevel2:number;
+
+
+
   
   
   
@@ -50,6 +55,7 @@ export class QuestionComponent implements OnInit {
      this.userResponse=data;
     console.log(this.allQuestions);
     console.log(this.userResponse);
+    this.userResponse[this.allQuestions.length].userAnswer="default";
 
       
      });
@@ -58,10 +64,11 @@ export class QuestionComponent implements OnInit {
 
   prevQues(){
     if(this.userResponse[this.questionNumber].userAnswer!=undefined){
-      this.userResponse[this.questionNumber].userQuestionId=this.allQuestions[this.questionNumber].questionId;
+      this.userResponse[this.questionNumber].userQuestionId=this.allQuestions[this.questionNumber-1].questionId;
     console.log("question number"+this.allQuestions[this.questionNumber].questionId+" "+this.allQuestions[this.questionNumber].answer);
     console.log("question number"+this.userResponse[this.questionNumber].userQuestionId+" "+this.userResponse[this.questionNumber].userAnswer);
     this.questionNumber--;
+
     }
     else{
       this.userResponse[this.questionNumber].userQuestionId=this.allQuestions[this.questionNumber].questionId;
@@ -70,13 +77,8 @@ export class QuestionComponent implements OnInit {
       console.log("question number"+this.userResponse[this.questionNumber].userQuestionId+" "+this.userResponse[this.questionNumber].userAnswer);
       this.questionNumber--;
     }
-
-   
-   
-
     
   }
-      //this.userAnswer[this.questionNumber].value=this.allQuestions[this.questionNumber].userResponse[this.questionNumber];
 
   nextQues(){
     
@@ -99,11 +101,10 @@ export class QuestionComponent implements OnInit {
   }
   submit(){
     this.isSubmitted=true;
-    
     console.log("initial marks"+this.marks);
+    
 
-
-    for(this.j=0;this.j<10;this.j++){
+    for(this.j=0;this.j<this.allQuestions.length;this.j++){
       if(this.userResponse[this.j].userAnswer==this.allQuestions[this.j].answer){
        this.marks=this.marks+10; 
       }
@@ -111,33 +112,34 @@ export class QuestionComponent implements OnInit {
     console.log(this.marks);
     sessionStorage.setItem("userMarks",String(this.marks));
     if(this.levelNumber==1){
+      this.tempLevel1=this.marks;
       this.Myscore.l1Score=this.marks;
       this.Myscore.l2Score=null;
       this.Myscore.l3Score=null;
-      // this.Myscore.myuser=this.loggedInUserId;
-      // this.Myscore.myexam=this.subjectNumber;
       this.reportService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
-
-        // this.result=data;
-        // sessionStorage.setItem("result",this.result);
-        this.router.navigate(['showResult']);
-        //console.log("hi");
-
-        
-      });
-
-      
-      
-      
-
-      
-
-
-    }
+      this.router.navigate(['showResult']);
+      console.log("hi");
+    });
+  }
     else if(this.levelNumber==2){
-
-    }
+      this.tempLevel2=this.marks;
+      this.Myscore.l1Score=this.tempLevel1;
+      this.Myscore.l2Score=this.marks;
+      this.Myscore.l3Score=null;
+      this.reportService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
+      this.router.navigate(['showResult']);
+      console.log("hi");
+    });
+  }
+   
     else{
+      this.Myscore.l1Score=this.tempLevel1;
+      this.Myscore.l2Score=this.tempLevel2;
+      this.Myscore.l3Score=this.marks;
+      this.reportService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
+      this.router.navigate(['showResult']);
+      console.log("hi");
+    });
 
     }
    

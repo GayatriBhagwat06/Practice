@@ -6,6 +6,7 @@ import { InstructionsComponent } from './instructions/instructions.component';
 import { QuestionComponent } from './question/question.component';
 import { ShowResultComponent } from './show-result/show-result.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
+import { UserReportComponent } from './user-report/user-report.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 
 
@@ -36,6 +37,9 @@ const routes: Routes = [
   },
   {
     path:'showResult',component:ShowResultComponent
+  },
+  {
+    path:'showReport',component:UserReportComponent
   }
  
 ];
