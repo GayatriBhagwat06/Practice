@@ -8,18 +8,14 @@ import { myscore } from './myscore';
 })
 export class ReportService {
 
+  constructor(private myhttp:HttpClient) { }
   baseURL:string ='http://localhost:8086/Myscore/';
 
-  constructor(private myhttp:HttpClient) { }
- 
-  // setScoreService(Myscore:myscore):Observable<any>{
-  //   return this.myhttp.post<myscore>(this.baseURL+"addScore"+Myscore,myscore);
-  // }
 
-  // setScoreService(Myscore:myscore):Observable<any>{
-  //   return this.myhttp.post<myscore>(this.baseURL+"addScore"+Myscore,myscore);
-  // }
-  setScoreService(Myscore:myscore,userId:number,subjectId:number):Observable<any>{
-    return this.myhttp.post<any>(this.baseURL+"addScore/"+userId+"/"+subjectId,Myscore);
+  getReportService(userId:number):Observable<myscore[]>{
+    return this.myhttp.get<myscore[]>(this.baseURL+"getReports/"+userId);
   }
+  // setScoreService(Myscore:myscore,userId:number,subjectId:number):Observable<any>{
+  //   return this.myhttp.post<any>(this.baseURL+"addScore/"+userId+"/"+subjectId,Myscore);
+  // }
 }

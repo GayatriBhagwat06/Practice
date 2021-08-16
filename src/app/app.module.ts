@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule} from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExamComponent } from './exam/exam.component';
@@ -16,6 +16,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { ShowResultComponent } from './show-result/show-result.component';
 import { UserReportComponent } from './user-report/user-report.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+// import "@angular/compiler";
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminManageQuestionsComponent } from './admin-manage-questions/admin-manage-questions.component';
+import { AdminSearchComponent } from './admin-search/admin-search.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { RegistrationComponent } from './registration/registration.component';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +38,12 @@ import { UserReportComponent } from './user-report/user-report.component';
     SubjectListComponent,
     ShowResultComponent,
     UserReportComponent,
+    AdminLoginComponent,
+    MenuBarComponent,
+    AdminSearchComponent,
+    AdminDashboardComponent,
+    AdminManageQuestionsComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +52,11 @@ import { UserReportComponent } from './user-report/user-report.component';
     HttpClientModule,
     FormsModule,
     CarouselModule,
-    NgbModule
+    NgbModule,
+    FormGroup,
+    FormBuilder,
+    Validators,
+    ReactiveFormsModule
     
    
   ],

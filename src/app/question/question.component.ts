@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { myscore } from '../myscore';
 import { QuestionService } from '../question.service';
 import { Questions1 } from '../Questions1';
-import { ReportService } from '../report.service';
+import { ScoreService } from '../score.service';
 import { UserResponse } from "../UserResponse";
 
 @Component({
@@ -40,7 +40,7 @@ export class QuestionComponent implements OnInit {
   
   
   
-  constructor(public questionService:QuestionService,public router:Router,public reportService:ReportService) {
+  constructor(public questionService:QuestionService,public router:Router,public scoreService:ScoreService) {
     
    }
 
@@ -116,7 +116,7 @@ export class QuestionComponent implements OnInit {
       this.Myscore.l1Score=this.marks;
       this.Myscore.l2Score=null;
       this.Myscore.l3Score=null;
-      this.reportService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
+      this.scoreService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
       this.router.navigate(['showResult']);
       console.log("hi");
     });
@@ -126,7 +126,7 @@ export class QuestionComponent implements OnInit {
       this.Myscore.l1Score=this.tempLevel1;
       this.Myscore.l2Score=this.marks;
       this.Myscore.l3Score=null;
-      this.reportService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
+      this.scoreService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
       this.router.navigate(['showResult']);
       console.log("hi");
     });
@@ -136,7 +136,7 @@ export class QuestionComponent implements OnInit {
       this.Myscore.l1Score=this.tempLevel1;
       this.Myscore.l2Score=this.tempLevel2;
       this.Myscore.l3Score=this.marks;
-      this.reportService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
+      this.scoreService.setScoreService(this.Myscore,this.loggedInUserId,this.subjectNumber).subscribe(()=>{
       this.router.navigate(['showResult']);
       console.log("hi");
     });
